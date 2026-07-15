@@ -7,15 +7,27 @@
 #include "../include/edge.h"
 #include "../include/point.h"
 
+struct SNode{
+    Point coord;
+    Point vec;
+};
+
+struct SCell{
+    std::vector<int> numNodes;
+};
+
 
 class Grid{
     private:
-        std::vector<Node> cells;
+        std::vector<Cell> cells;
         std::vector<Node> nodes;
         std::vector<Edge> edges;
     public:
-        Grid() {}
+        Grid();
         ~Grid() {}
+
+        void createGrid(std::vector<SNode> nodes, std::vector<SCell> cells);
+        void getInformation();
 };
 
 #endif

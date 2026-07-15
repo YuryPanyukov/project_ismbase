@@ -11,8 +11,10 @@ class Node{
         Node(Point coord): coord(coord) {}
         ~Node() {}
 
+        Point getCoord();
         double getX();
-        double getY();
+
+        void getInformation();
 };
 
 #endif
