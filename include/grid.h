@@ -14,6 +14,13 @@ struct SNode{
     SNode(Point coord, Point vec=Point(0, 0)): coord(coord), vec(vec) {}
 };
 
+struct SEdge{
+    int firstNode;
+    int secondNode;
+
+    SEdge(int firstNode, int secondNode): firstNode(firstNode), secondNode(secondNode) {}
+};
+
 struct SCell{
     std::vector<int> numNodes;
 
