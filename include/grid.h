@@ -10,10 +10,14 @@
 struct SNode{
     Point coord;
     Point vec;
+
+    SNode(Point coord, Point vec=Point(0, 0)): coord(coord), vec(vec) {}
 };
 
 struct SCell{
     std::vector<int> numNodes;
+
+    SCell(std::vector<int> numNodes): numNodes(numNodes) {}
 };
 
 
