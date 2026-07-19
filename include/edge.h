@@ -8,8 +8,12 @@ class Edge{
     private:
         Node first;
         Node second;
+
+        int frstNumCell = -1;
+        int scndNumCell = -1;
     public:
-        Edge(Node first, Node second): first(first), second(second) {}
+        Edge(Node first, Node second, int frstNumCell, int scndNumCell):
+           first(first), second(second), frstNumCell(frstNumCell), scndNumCell(scndNumCell) {}
         ~Edge() {}
 
         double getX();

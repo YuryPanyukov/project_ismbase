@@ -15,10 +15,15 @@ struct SNode{
 };
 
 struct SEdge{
-    int firstNode;
-    int secondNode;
+    int firstNodeNum;
+    int secondNodeNum;
 
-    SEdge(int firstNode, int secondNode): firstNode(firstNode), secondNode(secondNode) {}
+    int firstCellNum = -1;
+    int secondCellNum = -1;
+    
+
+    SEdge(int firstNodeNum, int secondNodeNum, int firstCellNum, int secondCellNum = -1): 
+    firstNodeNum(firstNodeNum), secondNodeNum(secondNodeNum), firstCellNum(firstCellNum), secondCellNum(secondCellNum) {}
 };
 
 struct SCell{
