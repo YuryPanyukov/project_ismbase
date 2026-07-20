@@ -22,7 +22,7 @@ struct SEdge{
     int secondCellNum = -1;
     
 
-    SEdge(int firstNodeNum, int secondNodeNum, int firstCellNum, int secondCellNum = -1): 
+    SEdge(int firstNodeNum, int secondNodeNum, int firstCellNum, int secondCellNum = -1):
     firstNodeNum(firstNodeNum), secondNodeNum(secondNodeNum), firstCellNum(firstCellNum), secondCellNum(secondCellNum) {}
 };
 
@@ -41,6 +41,11 @@ class Grid{
     public:
         Grid();
         ~Grid() {}
+
+        Node& getNode(int numNode) { return nodes[numNode]; }
+        Edge& getEdge(int numEdge) { return edges[numEdge]; }
+        Cell& getCell(int numCell) { return cells[numCell]; }
+        
 
         void createGrid(std::vector<SNode> nodes, std::vector<SCell> cells);
         void getInformation();

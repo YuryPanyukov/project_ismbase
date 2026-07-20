@@ -4,11 +4,12 @@
 
 #include "../include/point.h"
 #include "../include/node.h"
+#include "../include/cell.h"
 #include "../include/grid.h"
 
 Grid::Grid(){
     nodes.assign(0, Node(Point()));
-    edges.assign(0, Edge(Node(Point()), Node(Point()), -1, -1));
+    edges.assign(0, Edge(0, 0, -1, -1));
     cells.assign(0, Cell());
 }
 
@@ -48,7 +49,7 @@ void Grid::createGrid(std::vector<SNode> inputNodes, std::vector<SCell> inputCel
             }
             edgeNums.push_back(edgeNum);
         }
-        cells.push_back(Cell(edgeNums));
+        cells.push_back(Cell(edgeNums, this));
     }
 
     for (int i = 0; i<inputEdges.size(); i++){
@@ -56,12 +57,20 @@ void Grid::createGrid(std::vector<SNode> inputNodes, std::vector<SCell> inputCel
         int secondNodeNum = inputEdges[i].secondNodeNum;
         int firstCellNum = inputEdges[i].firstCellNum;
         int secondCellNum = inputEdges[i].secondCellNum;
-        edges.push_back(Edge(nodes[firstNodeNum], nodes[secondNodeNum], firstCellNum, secondCellNum));
+        edges.push_back(Edge(firstNodeNum, secondNodeNum, firstCellNum, secondCellNum));
     }
 
     for (int numNode = 0; numNode < numNodeCells.size(); numNode++){
         std::vector<int> adjCells;
         std::vector<int>& numCells = numNodeCells[numNode];
+        for (int idxCell = 0; idxCell < numCells.size(); idxCell++){
+            int numCell = numCells[idxCell];
+            const Cell& cell = cells[numCell];
+            for (int idxEdge = 0; idxEdge < cell.amountEdges(); idxEdge++){
+                int numEdge = cell.getEdgeNum(idxEdge);
+                const Edge& edge = edges[abs(numEdge)];
+            }
+        }
         
     }
 
